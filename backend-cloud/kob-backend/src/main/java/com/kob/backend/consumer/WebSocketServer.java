@@ -209,6 +209,7 @@ public class WebSocketServer {
             String mode = "selfTrain";
             if (machineId == 1) { // 匹配的是人机，不是玩家的 bot
                 List<BotDO> list = botService.list(Wrappers.<BotDO>lambdaQuery().eq(BotDO::getUserId, machineId));
+                System.out.println("111111"+list);
                 machineBotId = list.get(machineBotId).getId();
                 mode = "machine";
             }
