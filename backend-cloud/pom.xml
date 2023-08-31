@@ -63,7 +63,7 @@
                 <artifactId>spring-boot-starter-jdbc</artifactId>
                 <version>${jdbc.version}</version>
             </dependency>
-            <!-- lombok -->
+            <!-- lombok w-->
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
