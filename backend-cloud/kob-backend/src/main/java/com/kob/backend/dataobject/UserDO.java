@@ -13,7 +13,7 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 @TableName("user")
-public class UserDO {
+public class UserDO {//
     /** id */
     @TableId(type = IdType.AUTO)
     private Integer id;

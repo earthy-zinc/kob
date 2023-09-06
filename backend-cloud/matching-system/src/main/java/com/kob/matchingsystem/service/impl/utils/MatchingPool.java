@@ -77,7 +77,7 @@ public class MatchingPool extends Thread {
     /**
      * 返回匹配结果
      */
-    private void sendResult(Player a, Player b) {
+    private void sendResult(Player a, Player b) {//2.前端匹配成功 两个玩家需给平台一定费用(转移资产)
         MultiValueMap<String, String> data = new LinkedMultiValueMap<>();
         data.add("aId", a.getUserId().toString());
         data.add("aBotId", a.getBotId().toString());

@@ -29,6 +29,8 @@ public class UserController {
         return Result.success(userBiz.getToken(accountReqVO));
     }
 
+    //改写助记词登录方式
+
     /**
      * 注册
      */
@@ -39,6 +41,8 @@ public class UserController {
             return Result.success("注册成功");
         return Result.error(errorMessage);
     }
+
+    //改写助记词注册方式
 
     /**
      * 获取登录用户信息

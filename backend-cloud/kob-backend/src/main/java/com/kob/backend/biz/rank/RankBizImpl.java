@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class RankBizImpl implements RankBiz {
+public class  RankBizImpl implements RankBiz {
     @Resource
     private UserService userService;
 

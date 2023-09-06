@@ -24,11 +24,13 @@ public class RecordController {
     @Resource
     private RecordBiz recordBiz;
 
+    //对战记录列表
     @GetMapping("/list")
     public Result<PageMap<RecordRespVO>> getList(PageQuery pageQuery, RecordSearchVO searchVO) {
         return Result.success(recordBiz.getList(pageQuery, searchVO));
     }
 
+    //删除对战记录
     @DeleteMapping("/delete")
     public Result<?> deleteRecord(@Valid DeleteQuery query) {
         String errorMessage = recordBiz.delete(query);

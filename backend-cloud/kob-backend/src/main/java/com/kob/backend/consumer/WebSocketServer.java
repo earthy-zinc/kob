@@ -49,9 +49,9 @@ public class WebSocketServer {
 
     public static void createGame(Integer aId, Integer aBotId, Integer bId, Integer bBotId, String mode) {
         int realBId = bId;
-        if ("machine".equals(mode))
+        if ("machine".equals(mode))//人机对战 设realBId = 1 1默认是人机
             realBId = 1;
-        else if ("selfTrain".equals(mode))
+        else if ("selfTrain".equals(mode))//自我训练 realBId = aId
             realBId = aId;
 
         UserDO a = userService.getById(aId), b = userService.getById(realBId);
@@ -100,8 +100,8 @@ public class WebSocketServer {
     public void startGame() {
         if (this.game != null) {
             Player playerA = this.game.getPlayerA();
-            if (playerA.getId().equals(this.user.getId())) {
-                game.start();
+            if (playerA.getId().equals(this.user.getId())) {//
+                game.start();//启动该游戏线程
             }
         }
     }
@@ -158,7 +158,7 @@ public class WebSocketServer {
     /**
      * 开始匹配
      */
-    private void startMatching(Integer botId) {
+    private void startMatching(Integer botId) {//开始在线匹配转移资产给平台的账户地址
         MultiValueMap<String, String> data = new LinkedMultiValueMap<>();
         data.add("userId", this.user.getId().toString());
         data.add("rating", this.user.getRating().toString());
@@ -210,7 +210,7 @@ public class WebSocketServer {
             if (machineId == 1) { // 匹配的是人机，不是玩家的 bot
                 List<BotDO> list = botService.list(Wrappers.<BotDO>lambdaQuery().eq(BotDO::getUserId, machineId));
                 System.out.println("111111"+list);
-                machineBotId = list.get(machineBotId).getId();
+                machineBotId = list.get(machineBotId).getId();//获取数据库当中的machineBotId
                 mode = "machine";
             }
             String str = new SimpleDateFormat("HHmmss").format(new Date());

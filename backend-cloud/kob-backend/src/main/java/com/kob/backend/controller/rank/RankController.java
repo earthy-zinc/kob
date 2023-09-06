@@ -19,6 +19,7 @@ public class RankController {
     @Resource
     private RankBiz rankBiz;
 
+    //
     @GetMapping("/list")
     public Result<PageMap<RankRespVO>> getList(PageQuery pageQuery, RecordSearchVO searchVO) {
         return Result.success(rankBiz.getList(pageQuery, searchVO));

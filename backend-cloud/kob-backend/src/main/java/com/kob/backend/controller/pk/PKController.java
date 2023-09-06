@@ -18,6 +18,8 @@ public class PKController {
 
     @PostMapping("/start/game")
     public String startGame(@RequestParam MultiValueMap<String, String> data) {
+        System.out.println("00000000000000000000"+data);
+        System.out.println(data.getFirst("aId"));
         Integer aId = Integer.parseInt(Objects.requireNonNull(data.getFirst("aId")));
         Integer aBotId = Integer.parseInt(Objects.requireNonNull(data.getFirst("aBotId")));
         Integer bId = Integer.parseInt(Objects.requireNonNull(data.getFirst("bId")));
