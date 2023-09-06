@@ -65,7 +65,7 @@ public class UserBizImpl implements UserBiz {
         }
         String encodedPassword = passwordEncoder.encode(password);
         UserDO user = new UserDO().setUsername(username).setName("匿名用户").setPassword(encodedPassword)
-                .setRating(1500).setCreateTime(new Date());
+                .setRating(1500).setCreateTime(new Date());//
         userService.save(user);
 
         return null;
