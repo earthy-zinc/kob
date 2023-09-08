@@ -29,13 +29,14 @@ export const usePkStore = defineStore(
     let players = $ref<Player[]>([])
     let gameMapObject = $ref<GameMap>()
     let loser = $ref<Loser>('none')
-
+    let isReady = $ref<boolean>(false)
+    const { isFullscreen } = useFullscreen()
     const updateStatus = (value: Status) => status = value
     const updateSocket = (value: WebSocket) => socket = value
     const updateOpponent = (value = defaultOpponent) => opponent = value
     const updateGameMapObject = (value: GameMap) => gameMapObject = value
     const updateLoser = (value: Loser) => loser = value
-
+    const updateIsReady = (value: boolean) => isReady = value
     function updateGame({ aId, aSx, aSy, bId, bSx, bSy, map }: Game) {
       gameMap = map
       players = [
@@ -61,12 +62,15 @@ export const usePkStore = defineStore(
       players,
       gameMapObject,
       loser,
+      isReady,
+      isFullscreen,
       updateStatus,
       updateSocket,
       updateOpponent,
       updateGame,
       updateGameMapObject,
       updateLoser,
+      updateIsReady,
       reset,
     })
   },

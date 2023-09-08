@@ -1,11 +1,14 @@
 <script setup lang="ts">
-const { isFullscreen, exit } = useFullscreen()
+const { exit } = useFullscreen()
 const pkStore = usePkStore()
-const { players, loser } = storeToRefs(pkStore)
+const { players, loser, isReady, isFullscreen } = storeToRefs(pkStore)
 const userStore = useUserStore()
 const handleContinue = () => {
   pkStore.reset()
-  if (isFullscreen.value) exit()
+  if (isFullscreen.value) {
+    exit()
+    isReady.value = false
+  }
 }
 </script>
 

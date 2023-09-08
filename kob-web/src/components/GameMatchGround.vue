@@ -2,9 +2,9 @@
 import { GameControllerOutline } from '@vicons/ionicons5'
 
 const changePageIndex = inject('changePageIndex') as Function
-const { isFullscreen, enter, exit } = useFullscreen()
+const { enter, exit } = useFullscreen()
 const { user } = storeToRefs(useUserStore())
-const { opponent, socket } = storeToRefs(usePkStore())
+const { opponent, socket, isReady, isFullscreen } = storeToRefs(usePkStore())
 
 const selectedBot = ref()
 const botOptions = ref<{ value: number; label: string }[]>([])
@@ -22,7 +22,10 @@ function onClick() {
     }))
   } else {
     endLoading()
-    if (isFullscreen.value) exit()
+    if (isFullscreen.value) {
+      exit()
+      isReady.value = false
+    }
     matchBtnText = '开始匹配'
     socket.value?.send(JSON.stringify({
       event: 'stop-matching',

@@ -2,8 +2,10 @@
 import TheNav from './components/TheNav.vue'
 import TheContent from './components/TheContent.vue'
 import TheFoot from './components/TheFoot.vue'
+import { usePkStore } from '~/store/pk'
 import { APP_LAYOUT_PARAMS } from '~/config'
 
+const { isReady } = storeToRefs(usePkStore())
 const {
   navHeight,
   contentPadding,
@@ -19,7 +21,7 @@ const refWrapper = ref()
 
 <template>
   <n-layout hw-screen of-hidden>
-    <n-layout-header bordered position="absolute">
+    <n-layout-header v-show="!isReady" bordered position="absolute">
       <TheNav w-full :style="{ height: `${navHeight}px` }" />
     </n-layout-header>
     <n-layout
@@ -48,6 +50,7 @@ const refWrapper = ref()
       />
     </n-layout>
     <n-layout-footer
+      v-show="!isReady"
       bordered position="absolute"
       :style="{ height: `${footHeight}px` }"
     >
