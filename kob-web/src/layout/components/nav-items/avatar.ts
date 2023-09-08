@@ -5,7 +5,7 @@ import {
   ChatbubblesOutline,
   People as FriendIcon,
   LogOutOutline as LogoutIcon,
-  NotificationsCircleOutline as NotificationIcon,
+  NotificationsOutline as NotificationIcon,
   PersonCircleOutline as UserIcon,
 } from '@vicons/ionicons5'
 import type { Router } from 'vue-router'
