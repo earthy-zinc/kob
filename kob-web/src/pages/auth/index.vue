@@ -58,11 +58,30 @@ watch(currentTab, () => useTimeoutFn(inputAutoFocus, 200))
 function loginCallback(token: string) {
   router.push('/')
   login(token)
-  $notification.success({
-    title: '登录成功',
-    content: '欢迎使用，快来一场伟大的战斗吧~',
-    duration: 3000,
-  })
+  if (!userStore.user?.name || userStore.user?.name === '匿名用户' || !userStore.user?.avatar) {
+    $dialog.warning({
+      title: '注意',
+      content: '您的昵称和头像都还没有更改哦，快去填一下，不然别人不认识你呢 (O^O)',
+      positiveText: '前去填写~',
+      negativeText: '就不，哼！',
+      onPositiveClick: () => {
+        router.push('/profile')
+      },
+      onNegativeClick: () => {
+        $notification.success({
+          title: '登录成功',
+          content: '欢迎使用，下次记得完善个人信息哦~',
+          duration: 3000,
+        })
+      },
+    })
+  } else {
+    $notification.success({
+      title: '登录成功',
+      content: '欢迎使用，快来一场伟大的战斗吧~',
+      duration: 3000,
+    })
+  }
   setAuthModalVisible(false)
 }
 
