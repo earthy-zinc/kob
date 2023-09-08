@@ -2,10 +2,10 @@ import type { Component } from 'vue'
 import { NIcon } from 'naive-ui'
 import { RobotOutlined as BotIcon } from '@vicons/antd'
 import {
+  ChatbubblesOutline,
   People as FriendIcon,
   LogOutOutline as LogoutIcon,
   NotificationsCircleOutline as NotificationIcon,
-  BagHandleOutline as ShapIcon,
   PersonCircleOutline as UserIcon,
 } from '@vicons/ionicons5'
 import type { Router } from 'vue-router'
@@ -51,14 +51,11 @@ export const createDropdownOptions = (router: Router, userStore = useUserStore()
     },
   },
   {
-    label: '道具交易',
-    key: 'shop',
-    icon: renderIcon(ShapIcon),
+    label: '反馈中心',
+    key: 'discuss',
+    icon: renderIcon(ChatbubblesOutline),
     props: {
-      onClick: () => $notification.info({
-        content: '暂未实现，敬请期待',
-        duration: 30 * 1000,
-      }),
+      onClick: () => router.push('/discuss'),
     },
   },
   {

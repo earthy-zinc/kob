@@ -1,7 +1,7 @@
 import type { Component } from 'vue'
 import { RobotOutlined } from '@vicons/antd'
 import {
-  ChatbubblesOutline,
+  BagHandleOutline,
   DocumentTextOutline,
   HomeOutline,
   MedalOutline,
@@ -35,9 +35,9 @@ export const APP_MENUS: Menu[] = [
   },
   {
     id: 105,
-    label: '讨论区',
-    path: '/discuss',
-    icon: 'discuss',
+    label: '交易所',
+    path: '/shop',
+    icon: 'shop',
   },
 ]
 
@@ -46,5 +46,5 @@ export const APP_MENU_ICON_MAP: Record<string, Component> = {
   pk: RobotOutlined,
   record: DocumentTextOutline,
   rank: MedalOutline,
-  discuss: ChatbubblesOutline,
+  shop: BagHandleOutline,
 }
