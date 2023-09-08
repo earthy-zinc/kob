@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const changePageIndex = inject('changePageIndex') as Function
-
+const { isFullscreen, enter } = useFullscreen()
 const { user } = storeToRefs(useUserStore())
 const { socket } = storeToRefs(usePkStore())
 
@@ -15,7 +15,7 @@ function onClick() {
     $message.warning('请选择双方出战Bot')
     return
   }
-
+  if (!isFullscreen.value) enter()
   socket.value?.send(JSON.stringify({
     event: 'start-machine-training',
     botId: selectedBot.value,

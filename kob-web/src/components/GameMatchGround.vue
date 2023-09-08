@@ -2,7 +2,7 @@
 import { GameControllerOutline } from '@vicons/ionicons5'
 
 const changePageIndex = inject('changePageIndex') as Function
-
+const { isFullscreen, enter, exit } = useFullscreen()
 const { user } = storeToRefs(useUserStore())
 const { opponent, socket } = storeToRefs(usePkStore())
 
@@ -14,6 +14,7 @@ const { loading, startLoading, endLoading } = useLoading()
 function onClick() {
   if (matchBtnText === '开始匹配') {
     startLoading()
+    if (!isFullscreen.value) enter()
     matchBtnText = '取消匹配'
     socket.value?.send(JSON.stringify({
       event: 'start-matching',
@@ -21,6 +22,7 @@ function onClick() {
     }))
   } else {
     endLoading()
+    if (isFullscreen.value) exit()
     matchBtnText = '开始匹配'
     socket.value?.send(JSON.stringify({
       event: 'stop-matching',

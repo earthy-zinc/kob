@@ -11,6 +11,7 @@ export function useSocket(onmessage: (msg: any) => void) {
 
   socket.onopen = () => pkStore.updateSocket(socket)
   socket.onmessage = onmessage
+  socket.onerror = err => console.error(err, 'websocket连接失败')
   socket.onclose = () => {}
 
   return socket

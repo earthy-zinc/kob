@@ -6,12 +6,15 @@ import java.io.PrintWriter;
 import java.util.UUID;
 import java.util.function.Supplier;
 
+import com.kob.botrunningsystem.service.BotRunningService;
 import org.joor.Reflect;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
+
+import javax.annotation.Resource;
 
 @Component
 public class Consumer extends Thread {
@@ -48,9 +51,15 @@ public class Consumer extends Thread {
     public void run() {
         UUID uuid = UUID.randomUUID();
         String uid = uuid.toString().substring(0, 8);
-        Supplier<Integer> botInterface =
-            Reflect.compile("com.kob.botrunningsystem.utils.Bot" + uid, addUid(bot.getBotCode(), uid)).create().get();
-
+        Supplier<Integer> botInterface;
+        try {
+            botInterface =
+                    Reflect.compile("com.kob.botrunningsystem.utils.Bot" + uid, addUid(bot.getBotCode(), uid)).create().get();
+        }catch (NullPointerException e){
+            // TODO  暂时性缓解无法利用反射创建出来Bot对象，之后要修改！
+            e.printStackTrace();
+            botInterface = new com.kob.botrunningsystem.utils.Bot();
+        }
         File file = new File("input.txt");
         try (PrintWriter fileOut = new PrintWriter(file)) {
             fileOut.println(bot.getInput());

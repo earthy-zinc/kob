@@ -1,7 +1,12 @@
 <script setup lang="ts">
+const { isFullscreen, exit } = useFullscreen()
 const pkStore = usePkStore()
 const { players, loser } = storeToRefs(pkStore)
 const userStore = useUserStore()
+const handleContinue = () => {
+  pkStore.reset()
+  if (isFullscreen.value) exit()
+}
 </script>
 
 <template>
@@ -19,7 +24,7 @@ const userStore = useUserStore()
       Win
     </div>
     <div mt-2vh>
-      <n-button type="primary" text-color="white" @click="pkStore.reset">
+      <n-button type="primary" text-color="white" @click="handleContinue">
         <span font-bold>再来亿把</span>
       </n-button>
     </div>
