@@ -6,8 +6,8 @@ import {
   Search as SearchIcon,
   TrashBinOutline as TrashBinOutlineIcon,
 } from '@vicons/ionicons5'
-import { createColumns } from '~/pages/rank/columns'
-import type { Rank } from '~/types'
+import { createColumns } from '~/pages/shop/columns'
+import type { Product } from '~/types'
 
 const { isMobile, labelHidden } = useResponsive()
 const { loading, startLoading, endLoading } = useLoading()
@@ -20,16 +20,20 @@ const columns = createColumns({
   createRowNumber: pagination.createRowNumber,
 })
 
-let tableData = $ref<Rank[]>([])
+let tableData = $ref<Product[]>([])
 const searchModel = reactive<{ name?: string }>({ name: '' })
 
 function fetchTableData() {
   startLoading()
   const { page, pageSize } = pagination
+  const data = [
+    { id: 1, prop_id: 1, prop_name: '炸弹', prop_avatar: '', seller_id: 1, sell_name: '我欲焚天', description: '爱买不买', priceUint: 'ethm', number: 10, price: 12, totalPrice: 120, createTime: new Date() },
+    { id: 2, prop_id: 1, prop_name: '路障', prop_avatar: '', seller_id: 1, sell_name: '小菜鸡', description: '爱买不买', priceUint: 'ethm', number: 10, price: 12, totalPrice: 120, createTime: new Date() },
+  ]
   RankApi
     .getRankList({ page, pageSize, name: searchModel.name?.trim() })
     .then(({ data: { records = [], total = 0 } }) => {
-      tableData = records
+      tableData = data
       pagination.itemCount = total
     })
     .finally(() => useTimeoutFn(endLoading, 1000))
