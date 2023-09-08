@@ -41,13 +41,19 @@ function checkRecord(friendId: number): Friend {
 function fetchTableData() {
   startLoading()
   const { page, pageSize } = pagination
+  const data = [
+    { id: 1, username: 'xswl', name: '我欲焚天', avatar: '暂无', rating: 1245, createTime: new Date() },
+  ]
   FriendApi
     .getFriendList({ page, pageSize, name: searchModel.name?.trim() })
     .then(({ data: { records = [], total = 0 } }) => {
-      tableData = records
+      tableData = data
       pagination.itemCount = total
     })
-    .finally(() => useTimeoutFn(endLoading, 1000))
+    .finally(() => {
+      tableData = data
+      useTimeoutFn(endLoading, 1000)
+    })
 }
 fetchTableData()
 </script>

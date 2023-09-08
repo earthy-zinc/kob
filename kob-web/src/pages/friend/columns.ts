@@ -58,6 +58,7 @@ export function createColumns({
               size: 'small',
               type: 'error',
               textColor: 'white',
+              style: { marginLeft: '10px' },
               onClick: () => canDelete?.(row.id as number),
             },
             { default: () => '删除好友' },
@@ -74,5 +75,5 @@ export function createColumns({
 }
 
 function renderPlayer(username?: string, name?: string, avatar?: string) {
-  return null
+  return `${username}-${name}-${avatar}`
 }
