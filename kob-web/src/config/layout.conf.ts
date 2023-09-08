@@ -5,5 +5,5 @@ export const APP_LAYOUT_PARAMS = {
   footHeight: 50,
   backTopRight: 20,
   backTopBottom: 200,
-  backTopvisibilityHeight: 250,
+  backTopVisibilityHeight: 250,
 }

@@ -80,10 +80,10 @@ export class GameMap extends Game {
 
     canvas.addEventListener('keydown', (e) => {
       let d = -1
-      if (e.key === 'w') d = 0
-      else if (e.key === 'd') d = 1
-      else if (e.key === 's') d = 2
-      else if (e.key === 'a') d = 3
+      if (e.key === 'w' || e.key === 'ArrowUp') d = 0
+      else if (e.key === 'd' || e.key === 'ArrowRight') d = 1
+      else if (e.key === 's' || e.key === 'ArrowDown') d = 2
+      else if (e.key === 'a' || e.key === 'ArrowLeft') d = 3
 
       if (d >= 0) {
         socket?.send(JSON.stringify({

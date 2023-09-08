@@ -10,7 +10,7 @@ const {
   footHeight,
   backTopRight,
   backTopBottom,
-  backTopvisibilityHeight,
+  backTopVisibilityHeight,
 } = APP_LAYOUT_PARAMS
 
 // 设置 `backTop` 的监听目标
@@ -44,7 +44,7 @@ const refWrapper = ref()
         :listen-to="refWrapper"
         :right="backTopRight"
         :bottom="backTopBottom"
-        :visibility-height="backTopvisibilityHeight"
+        :visibility-height="backTopVisibilityHeight"
       />
     </n-layout>
     <n-layout-footer

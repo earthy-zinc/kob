@@ -12,6 +12,7 @@
     "resolveJsonModule": true,
     "noUnusedLocals": true,
     "strictNullChecks": true,
+    "allowSyntheticDefaultImports": true /* 允许默认导入 */,
     "forceConsistentCasingInFileNames": true,
     "types": [
       "vite/client",
@@ -21,5 +22,11 @@
       "~/*": ["src/*"]
     }
   },
-  "exclude": ["dist", "node_modules"]
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue"
+  ],
+  "exclude": ["dist", "node_modules", "**/*.js"]
 }
