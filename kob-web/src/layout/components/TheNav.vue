@@ -1,13 +1,57 @@
 <script setup lang="ts">
+import { NButton } from 'naive-ui'
 import { NavAvatar, NavLogo, NavMenu, NavResponsivePanel } from './nav-items'
+import { useMessageStore } from '~/store/message'
+import { $message } from '~/composables/tools'
 import { APP_META } from '~/config'
 
 const { isMobile } = useResponsive()
 const development = isDevelopment
+const { setMessageNum } = useMessageStore()
+const { messageNum } = storeToRefs(useMessageStore())
+
 const handleMessagePopover = () => {
-  $notification.info({
-    content: '点击了消息按钮',
-    duration: 30 * 1000,
+  const notice = $notification.create({
+    title: '好友请求',
+    content: '兴奋的大母猴 请求添加您为好友',
+    meta: '2023-9-9 12:11',
+    closable: false,
+    action: () => {
+      const btnArray = [
+        h(
+          NButton,
+          {
+            text: true,
+            type: 'primary',
+            onClick: () => {
+              $message.info('成功添加为好友')
+              setMessageNum(0)
+              notice.destroy()
+            },
+          },
+          {
+            default: () => '接收',
+          },
+        ),
+        h(
+          NButton,
+          {
+            text: true,
+            type: 'warning',
+            style: { marginLeft: '10px' },
+            onClick: () => {
+              $message.info('已拒绝添加为好友')
+              setMessageNum(0)
+              notice.destroy()
+            },
+          },
+          {
+            default: () => '拒绝',
+          },
+        ),
+      ]
+      return h('div', {}, btnArray)
+    },
   })
 }
 </script>
@@ -25,7 +69,7 @@ const handleMessagePopover = () => {
         :href="APP_META.github"
         target="_blank" title="GitHub"
       />
-      <n-badge :value="384" :max="99">
+      <n-badge :value="messageNum as number" :max="99">
         <div icon-btn text-lg i-ion-notifications-outline @click="handleMessagePopover" />
       </n-badge>
       <DarkToggle ml-5 mr-5 />

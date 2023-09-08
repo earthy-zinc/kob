@@ -36,10 +36,7 @@ export const createDropdownOptions = (router: Router, userStore = useUserStore()
     key: 'message',
     icon: renderIcon(NotificationIcon),
     props: {
-      onClick: () => $notification.info({
-        content: '暂未实现，敬请期待',
-        duration: 30 * 1000,
-      }),
+      onClick: () => router.push('/message'),
     },
   },
   {
