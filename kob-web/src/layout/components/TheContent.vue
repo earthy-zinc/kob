@@ -1,9 +1,7 @@
 <template>
-  <div>
+  <div flex justify-center>
     <RouterView v-slot="{ Component, route }">
-      <Transition name="fade-slide" mode="out-in" appear>
-        <component :is="Component" :key="route.path" />
-      </Transition>
+      <component :is="Component" :key="route.path" />
     </RouterView>
   </div>
 </template>

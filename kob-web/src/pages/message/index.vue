@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import SideBar from './components/SideBar/index.vue'
-import Content from './components/Content/index.vue'
 import { APP_LAYOUT_PARAMS } from '~/config'
 
 const {
@@ -11,16 +10,21 @@ const {
 </script>
 
 <template>
-  <div w-full h-full>
+  <div style="max-width: 1143px;" h-full>
     <n-card hoverable>
       <div
         class="message-container"
-        flex w-full h-full :style="{
+        flex justify-between :style="{
           minHeight: `calc(100vh - ${navHeight + contentPadding * 2 + footHeight + 22 * 2}px)`,
         }"
       >
         <SideBar />
-        <Content />
+        <n-divider
+          vertical :style="{
+            minHeight: `calc(100vh - ${navHeight + contentPadding * 2 + footHeight + 22 * 2}px)`,
+          }"
+        />
+        <RouterView />
       </div>
     </n-card>
   </div>
@@ -28,8 +32,8 @@ const {
 
 <style scoped>
 .message-container {
-  justify-content: stretch;
-  align-items: stretch;
-  align-content: stretch;
+  n-divider {
+    flex-grow: 0;
+  }
 }
 </style>

@@ -20,6 +20,7 @@ declare global {
   const Conditional: typeof import('./composables/conditional')['Conditional']
   const DiscussApi: typeof import('./server/api/remark')['DiscussApi']
   const EffectScope: typeof import('vue')['EffectScope']
+  const FriendApi: typeof import('./server/api/friend')['FriendApi']
   const R: typeof import('./composables/tools')['R']
   const RankApi: typeof import('./server/api/rank')['RankApi']
   const RecordApi: typeof import('./server/api/record')['RecordApi']
@@ -224,6 +225,7 @@ declare global {
   const useMediaQuery: typeof import('@vueuse/core')['useMediaQuery']
   const useMemoize: typeof import('@vueuse/core')['useMemoize']
   const useMemory: typeof import('@vueuse/core')['useMemory']
+  const useMessageStore: typeof import('./store/message')['useMessageStore']
   const useMounted: typeof import('@vueuse/core')['useMounted']
   const useMouse: typeof import('@vueuse/core')['useMouse']
   const useMouseInElement: typeof import('@vueuse/core')['useMouseInElement']
@@ -348,6 +350,7 @@ declare module 'vue' {
     readonly Conditional: UnwrapRef<typeof import('./composables/conditional')['Conditional']>
     readonly DiscussApi: UnwrapRef<typeof import('./server/api/remark')['DiscussApi']>
     readonly EffectScope: UnwrapRef<typeof import('vue')['EffectScope']>
+    readonly FriendApi: UnwrapRef<typeof import('./server/api/friend')['FriendApi']>
     readonly R: UnwrapRef<typeof import('./composables/tools')['R']>
     readonly RankApi: UnwrapRef<typeof import('./server/api/rank')['RankApi']>
     readonly RecordApi: UnwrapRef<typeof import('./server/api/record')['RecordApi']>
@@ -552,6 +555,7 @@ declare module 'vue' {
     readonly useMediaQuery: UnwrapRef<typeof import('@vueuse/core')['useMediaQuery']>
     readonly useMemoize: UnwrapRef<typeof import('@vueuse/core')['useMemoize']>
     readonly useMemory: UnwrapRef<typeof import('@vueuse/core')['useMemory']>
+    readonly useMessageStore: UnwrapRef<typeof import('./store/message')['useMessageStore']>
     readonly useMounted: UnwrapRef<typeof import('@vueuse/core')['useMounted']>
     readonly useMouse: UnwrapRef<typeof import('@vueuse/core')['useMouse']>
     readonly useMouseInElement: UnwrapRef<typeof import('@vueuse/core')['useMouseInElement']>

@@ -38,7 +38,7 @@ const handleMessagePopover = () => {
           {
             text: true,
             type: 'warning',
-            style: { marginLeft: '10px' },
+            style: { marginLeft: '20px' },
             onClick: () => {
               $message.info('已拒绝添加为好友')
               setMessageNum(0)

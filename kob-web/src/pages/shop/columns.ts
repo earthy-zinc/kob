@@ -1,6 +1,8 @@
-import { NButton } from 'naive-ui'
+import { RibbonOutline } from '@vicons/ionicons5'
+import { NAvatar, NButton, NEllipsis, NIcon, NIconWrapper, NTooltip } from 'naive-ui'
 import type { DataTableColumns } from 'naive-ui'
 import type { Product } from '~/types'
+import defaultAvatar from '~/assets/default-avatar.png'
 
 export function createColumns({
   createRowNumber,
@@ -18,18 +20,18 @@ export function createColumns({
     },
     {
       title: '道具',
-      key: 'prop_id',
+      key: 'prop_name',
       align: 'center',
-      render({ prop_name, prop_avatar }) {
-        return renderColumn(prop_name, prop_avatar)
+      render({ prop_id, prop_name, prop_avatar }) {
+        return renderColumn(prop_id, prop_name, prop_avatar)
       },
     },
     {
-      key: 'seller_id',
+      key: 'seller_name',
       title: '卖家',
       align: 'center',
-      render({ seller_name, seller_avatar }) {
-        return renderColumn(seller_name, seller_avatar)
+      render({ seller_id, seller_name, seller_avatar }) {
+        return renderColumn(seller_id, seller_name, seller_avatar, 'seller')
       },
     },
     {
@@ -106,8 +108,54 @@ export function createColumns({
   ]
 }
 
-function renderColumn(name?: string, avatar?: string) {
-  return `${name} ${avatar}`
+function renderColumn(id?: number, name?: string, avatar?: string, type?: string) {
+  const widgets = [
+    h(
+      NAvatar,
+      {
+        size: 'small',
+        round: true,
+        src: (avatar && avatar !== '') ? avatar : defaultAvatar,
+      },
+    ),
+    h(
+      NEllipsis,
+      {
+        maxWidth: '200px',
+        style: {
+          marginLeft: '10px',
+        },
+      },
+      () => name,
+    ),
+  ]
+  if (id === 1 && type === 'seller') {
+    widgets.push(h(NTooltip, { trigger: 'hover' },
+      {
+        trigger: () =>
+          h(NIconWrapper, {
+            size: 24,
+            borderRadius: 10,
+            color: '#886BFA',
+            iconColor: 'white',
+            style: {
+              marginLeft: '10px',
+            },
+          },
+          () => h(NIcon, {
+            size: 16,
+            component: RibbonOutline,
+          })),
+        default: () => '官方认证，非常可靠',
+      }))
+  }
+  return h('div', {
+    style: {
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+  }, widgets)
 }
 function renderPrice(priceUint?: string, price?: number) {
   return `${price} ${priceUint}`

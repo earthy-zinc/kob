@@ -2,8 +2,9 @@
 
 </script>
 
-<template />
+<template>
+  <div>hsk</div>
+</template>
 
 <style scoped>
-对话框
 </style>

@@ -27,14 +27,14 @@ function fetchTableData() {
   startLoading()
   const { page, pageSize } = pagination
   const data = [
-    { id: 1, prop_id: 1, prop_name: '炸弹', prop_avatar: '', seller_id: 1, sell_name: '我欲焚天', description: '爱买不买', priceUint: 'ethm', number: 10, price: 12, totalPrice: 120, createTime: new Date() },
-    { id: 2, prop_id: 1, prop_name: '路障', prop_avatar: '', seller_id: 1, sell_name: '小菜鸡', description: '爱买不买', priceUint: 'ethm', number: 10, price: 12, totalPrice: 120, createTime: new Date() },
-    { id: 3, prop_id: 1, prop_name: '延时器', prop_avatar: '', seller_id: 1, sell_name: '小菜鸡', description: '爱买不买', priceUint: 'ethm', number: 10, price: 12, totalPrice: 120, createTime: new Date() },
-    { id: 4, prop_id: 1, prop_name: '路障', prop_avatar: '', seller_id: 1, sell_name: '小菜鸡', description: '爱买不买', priceUint: 'ethm', number: 10, price: 12, totalPrice: 120, createTime: new Date() },
-    { id: 5, prop_id: 1, prop_name: '炸弹', prop_avatar: '', seller_id: 1, sell_name: '小菜鸡', description: '爱买不买', priceUint: 'ethm', number: 10, price: 12, totalPrice: 120, createTime: new Date() },
-    { id: 6, prop_id: 1, prop_name: '剪刀', prop_avatar: '', seller_id: 1, sell_name: '小菜鸡', description: '爱买不买', priceUint: 'ethm', number: 10, price: 12, totalPrice: 120, createTime: new Date() },
-    { id: 7, prop_id: 1, prop_name: '剪刀', prop_avatar: '', seller_id: 1, sell_name: '小菜鸡', description: '爱买不买', priceUint: 'ethm', number: 10, price: 12, totalPrice: 120, createTime: new Date() },
-    { id: 8, prop_id: 1, prop_name: '剪刀', prop_avatar: '', seller_id: 1, sell_name: '小菜鸡', description: '爱买不买', priceUint: 'ethm', number: 10, price: 12, totalPrice: 120, createTime: new Date() },
+    { id: 1, prop_id: 1, prop_name: '炸弹', prop_avatar: '', seller_id: 1, seller_name: '官方', seller_avatar: '', description: '爱买不买', priceUint: 'ethm', number: 10, price: 12, totalPrice: 120, createTime: new Date() },
+    { id: 2, prop_id: 1, prop_name: '路障', prop_avatar: '', seller_id: 2, seller_name: '小菜鸡', seller_avatar: '', description: '爱买不买', priceUint: 'ethm', number: 10, price: 12, totalPrice: 120, createTime: new Date() },
+    { id: 3, prop_id: 1, prop_name: '延时器', prop_avatar: '', seller_id: 3, seller_name: '小菜鸡', seller_avatar: '', description: '爱买不买', priceUint: 'ethm', number: 10, price: 12, totalPrice: 120, createTime: new Date() },
+    { id: 4, prop_id: 1, prop_name: '路障', prop_avatar: '', seller_id: 3, seller_name: '小菜鸡', seller_avatar: '', description: '爱买不买', priceUint: 'ethm', number: 10, price: 12, totalPrice: 120, createTime: new Date() },
+    { id: 5, prop_id: 1, prop_name: '炸弹', prop_avatar: '', seller_id: 3, seller_name: '小菜鸡', seller_avatar: '', description: '爱买不买', priceUint: 'ethm', number: 10, price: 12, totalPrice: 120, createTime: new Date() },
+    { id: 6, prop_id: 1, prop_name: '剪刀', prop_avatar: '', seller_id: 3, seller_name: '小菜鸡', seller_avatar: '', description: '爱买不买', priceUint: 'ethm', number: 10, price: 12, totalPrice: 120, createTime: new Date() },
+    { id: 7, prop_id: 1, prop_name: '剪刀', prop_avatar: '', seller_id: 3, seller_name: '小菜鸡', seller_avatar: '', description: '爱买不买', priceUint: 'ethm', number: 10, price: 12, totalPrice: 120, createTime: new Date() },
+    { id: 8, prop_id: 1, prop_name: '剪刀', prop_avatar: '', seller_id: 3, seller_name: '小菜鸡', seller_avatar: '', description: '爱买不买', priceUint: 'ethm', number: 10, price: 12, totalPrice: 120, createTime: new Date() },
   ]
   RankApi
     .getRankList({ page, pageSize, name: searchModel.name?.trim() })

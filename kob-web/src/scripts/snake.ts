@@ -16,7 +16,7 @@ export class Snake {
   private id: number
   private color: string
 
-  private cells: SnakeCell[]
+  private cells: SnakeCell[] // 蛇所占据的单元格，蛇头在cells[0]
   private nextCell: SnakeCell | null = null // 下一步目标单元格
 
   private speed = 5 // 每秒走五个格子
