@@ -100,7 +100,7 @@ const chatList = reactive<Chat[]>([
   },
 ])
 
-function openChatFrame(userId: number) {
+function fetchMessageList(userId: number) {
   // todo
 }
 </script>
@@ -115,7 +115,7 @@ function openChatFrame(userId: number) {
       }"
     >
       <n-list v-for="chat in chatList" :key="chat.id" hoverable clickable>
-        <n-list-item :key="chat.id" @click="openChatFrame(chat.userId)">
+        <n-list-item :key="chat.id" @click="fetchMessageList(chat.userId)">
           <div flex items-center>
             <n-avatar
               round
