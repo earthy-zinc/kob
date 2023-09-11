@@ -1,24 +1,8 @@
 <script setup lang="ts">
-import { APP_LAYOUT_PARAMS } from '~/config'
-
-const {
-  navHeight,
-  contentPadding,
-  footHeight,
-} = APP_LAYOUT_PARAMS
 </script>
 
 <template>
-  <n-scrollbar
-    :style="{
-      maxHeight: `calc(100vh - ${navHeight + contentPadding * 2 + footHeight + 22 * 2}px)`,
-      minWidth: `600px`,
-    }"
-  >
-    <div text-center style="font-size: medium; font-weight: bold">
-      系统消息
-    </div>
-    <n-divider style="margin-top: 16px" />
+  <n-scrollbar>
     <n-list hoverable clickable>
       <n-list-item>
         <n-thing title="好友请求" title-extra="2023-6-5 10:25:04" content-style="margin-top: 10px;">
@@ -79,6 +63,142 @@ const {
       </n-list-item>
       <n-list-item>
         <n-thing title="好友请求" title-extra="2023-6-1 10:25:04" content-style="margin-top: 10px;">
+          <div style="display: flex; justify-content: space-between">
+            <div>
+              <strong>兴奋的大母猴</strong> 请求添加您为好友
+            </div>
+            <div>
+              <n-button type="info" size="tiny" style="margin-right: 10px">
+                接受
+              </n-button>
+              <n-button type="info" size="tiny">
+                拒绝
+              </n-button>
+            </div>
+          </div>
+        </n-thing>
+      </n-list-item>
+      <n-list-item>
+        <n-thing title="好友请求" title-extra="2023-6-5 10:25:04" content-style="margin-top: 10px;">
+          <div style="display: flex; justify-content: space-between">
+            <div>
+              <strong>兴奋的大母猴</strong> 请求添加您为好友
+            </div>
+            <div>
+              <n-button type="info" size="tiny" style="margin-right: 10px">
+                接受
+              </n-button>
+              <n-button type="info" size="tiny">
+                拒绝
+              </n-button>
+            </div>
+          </div>
+        </n-thing>
+      </n-list-item>
+      <n-list-item>
+        <n-thing title="好友请求" title-extra="2023-6-5 10:25:04" content-style="margin-top: 10px;">
+          <div style="display: flex; justify-content: space-between">
+            <div>
+              <strong>兴奋的大母猴</strong> 请求添加您为好友
+            </div>
+            <div>
+              <n-button type="info" size="tiny" style="margin-right: 10px">
+                接受
+              </n-button>
+              <n-button type="info" size="tiny">
+                拒绝
+              </n-button>
+            </div>
+          </div>
+        </n-thing>
+      </n-list-item>
+      <n-list-item>
+        <n-thing title="好友请求" title-extra="2023-6-5 10:25:04" content-style="margin-top: 10px;">
+          <div style="display: flex; justify-content: space-between">
+            <div>
+              <strong>兴奋的大母猴</strong> 请求添加您为好友
+            </div>
+            <div>
+              <n-button type="info" size="tiny" style="margin-right: 10px">
+                接受
+              </n-button>
+              <n-button type="info" size="tiny">
+                拒绝
+              </n-button>
+            </div>
+          </div>
+        </n-thing>
+      </n-list-item>
+      <n-list-item>
+        <n-thing title="好友请求" title-extra="2023-6-5 10:25:04" content-style="margin-top: 10px;">
+          <div style="display: flex; justify-content: space-between">
+            <div>
+              <strong>兴奋的大母猴</strong> 请求添加您为好友
+            </div>
+            <div>
+              <n-button type="info" size="tiny" style="margin-right: 10px">
+                接受
+              </n-button>
+              <n-button type="info" size="tiny">
+                拒绝
+              </n-button>
+            </div>
+          </div>
+        </n-thing>
+      </n-list-item>
+      <n-list-item>
+        <n-thing title="好友请求" title-extra="2023-6-5 10:25:04" content-style="margin-top: 10px;">
+          <div style="display: flex; justify-content: space-between">
+            <div>
+              <strong>兴奋的大母猴</strong> 请求添加您为好友
+            </div>
+            <div>
+              <n-button type="info" size="tiny" style="margin-right: 10px">
+                接受
+              </n-button>
+              <n-button type="info" size="tiny">
+                拒绝
+              </n-button>
+            </div>
+          </div>
+        </n-thing>
+      </n-list-item>
+      <n-list-item>
+        <n-thing title="好友请求" title-extra="2023-6-5 10:25:04" content-style="margin-top: 10px;">
+          <div style="display: flex; justify-content: space-between">
+            <div>
+              <strong>兴奋的大母猴</strong> 请求添加您为好友
+            </div>
+            <div>
+              <n-button type="info" size="tiny" style="margin-right: 10px">
+                接受
+              </n-button>
+              <n-button type="info" size="tiny">
+                拒绝
+              </n-button>
+            </div>
+          </div>
+        </n-thing>
+      </n-list-item>
+      <n-list-item>
+        <n-thing title="好友请求" title-extra="2023-6-5 10:25:04" content-style="margin-top: 10px;">
+          <div style="display: flex; justify-content: space-between">
+            <div>
+              <strong>兴奋的大母猴</strong> 请求添加您为好友
+            </div>
+            <div>
+              <n-button type="info" size="tiny" style="margin-right: 10px">
+                接受
+              </n-button>
+              <n-button type="info" size="tiny">
+                拒绝
+              </n-button>
+            </div>
+          </div>
+        </n-thing>
+      </n-list-item>
+      <n-list-item>
+        <n-thing title="好友请求" title-extra="2023-6-5 10:25:04" content-style="margin-top: 10px;">
           <div style="display: flex; justify-content: space-between">
             <div>
               <strong>兴奋的大母猴</strong> 请求添加您为好友

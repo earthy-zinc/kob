@@ -1,10 +1,14 @@
 <script setup lang="ts">
 import type { MenuOption } from 'naive-ui'
-import { NIcon } from 'naive-ui'
-import type { Component } from 'vue'
 import { RouterLink } from 'vue-router'
+// eslint-disable-next-line prefer-const
+let activeMenu = ref<string>('')
+const route = useRoute()
 
-const renderIcon = (icon: Component) => () => h(NIcon, null, { default: () => h(icon) })
+onMounted(() => {
+  activeMenu.value = route.name as string
+})
+
 const menuOptions: MenuOption[] = [
   {
     label: () => h(RouterLink, {
@@ -14,7 +18,7 @@ const menuOptions: MenuOption[] = [
     },
     { default: () => '对战结果' },
     ),
-    key: 'gameResult',
+    key: 'gameMessage',
   },
   {
     label: () => h(RouterLink, {
@@ -60,20 +64,15 @@ const menuOptions: MenuOption[] = [
 </script>
 
 <template>
-  <n-scrollbar class="scrollbar">
-    <div style=" margin-top: 20px;text-align: center; font-weight: bold">
+  <n-scrollbar>
+    <div style="text-align: center; font-weight: bold; height: 60px; line-height: 60px">
       消息中心
     </div>
-    <n-divider />
-    <n-menu :options="menuOptions" style="text-align: center" :root-indent="16" />
+    <n-divider style="margin: 0" />
+    <n-menu :value="activeMenu" :options="menuOptions" style="text-align: center" :root-indent="16" />
   </n-scrollbar>
 </template>
 
-<style scoped>
-</style>
-
 <style>
-.scrollbar {
-  width: 180px;
-}
+
 </style>

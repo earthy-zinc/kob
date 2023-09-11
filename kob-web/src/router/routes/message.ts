@@ -14,6 +14,15 @@ export default {
       },
       children: [
         {
+          path: 'game',
+          name: 'gameMessage',
+          component: () => import('~/pages/message/pages/GameResult/index.vue'),
+          meta: {
+            title: '对战结果',
+            requiresAuth: true,
+          },
+        },
+        {
           path: 'chat',
           name: 'chatMessage',
           component: () => import('~/pages/message/pages/ChatMessage/index.vue'),
@@ -23,29 +32,20 @@ export default {
           },
         },
         {
-          path: 'system',
-          name: 'SystemMessage',
-          component: () => import('~/pages/message/pages/SystemMessage/index.vue'),
-          meta: {
-            title: '系统消息',
-            requiresAuth: true,
-          },
-        },
-        {
           path: 'friend',
           name: 'friendMessage',
-          component: () => import('~/pages/message/pages/ChatMessage/index.vue'),
+          component: () => import('~/pages/message/pages/FriendMessage/index.vue'),
           meta: {
             title: '好友消息',
             requiresAuth: true,
           },
         },
         {
-          path: 'game',
-          name: 'gameMessage',
-          component: () => import('~/pages/message/pages/GameResult/index.vue'),
+          path: 'system',
+          name: 'systemMessage',
+          component: () => import('~/pages/message/pages/SystemMessage/index.vue'),
           meta: {
-            title: '对战结果',
+            title: '系统消息',
             requiresAuth: true,
           },
         },
