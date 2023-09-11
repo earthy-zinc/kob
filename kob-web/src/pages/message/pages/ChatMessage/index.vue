@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { APP_LAYOUT_PARAMS } from '~/config'
-import BlankMessageBody from '~/pages/message/components/Content/BlankMessageBody.vue'
+import ChatContentBar from '~/pages/message/components/Content/ChatContentBar.vue'
 
 const {
   navHeight,
@@ -140,7 +140,7 @@ const {
         }"
       />
       <div style="min-width: 300px">
-        <BlankMessageBody />
+        <ChatContentBar />
       </div>
     </div>
   </div>

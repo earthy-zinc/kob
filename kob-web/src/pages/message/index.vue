@@ -11,7 +11,7 @@ const {
 
 <template>
   <div style="max-width: 1143px;" h-full>
-    <n-card hoverable>
+    <n-card hoverable :content-style="{ 'padding-right': 0, 'padding-left': 0 }">
       <div
         class="message-container"
         flex justify-between :style="{
