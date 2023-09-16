@@ -34,6 +34,13 @@ public class UserDO {//
     /** openId */
     private String openId;
     /** 创建时间 */
+
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Shanghai")
     private Date createTime;
+
+    //助记词(新增字段)
+    private String mnemonic;
+    //钱包地址
+    private String address;
+
 }

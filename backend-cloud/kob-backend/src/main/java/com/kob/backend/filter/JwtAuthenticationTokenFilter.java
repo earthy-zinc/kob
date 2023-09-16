@@ -33,14 +33,13 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, @NotNull HttpServletResponse response,
         @NotNull FilterChain filterChain) throws ServletException, IOException {
         String token = request.getHeader("Authorization");
-
+        System.out.println(token);
         if (!StringUtils.hasText(token) || !token.startsWith("Bearer ")) {
             filterChain.doFilter(request, response);
             return;
         }
-
         token = token.substring(7);
-
+        System.out.println(token);
         String userId;
         try {
             Claims claims = JwtUtil.parseJWT(token);

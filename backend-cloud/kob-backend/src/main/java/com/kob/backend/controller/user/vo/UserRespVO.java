@@ -20,4 +20,8 @@ public class UserRespVO {
     private String openId;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Shanghai")
     private Date createTime;
+    //新增字段 地址
+    private String address;
+
+
 }

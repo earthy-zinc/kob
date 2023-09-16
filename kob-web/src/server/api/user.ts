@@ -10,4 +10,5 @@ export const UserApi = {
   }) => R.post('/api/user/account/register', { body }),
   getLoginUserInfo: () => R.get<User>('/api/user/account/info'),
   updateLoginUserInfo: (body: User) => R.put('/api/user/account/info', { body }),
+  updateUserWalletInfo: (body: User) => R.put('/api/user/account/updateUserWalletInfo', { body }),
 }

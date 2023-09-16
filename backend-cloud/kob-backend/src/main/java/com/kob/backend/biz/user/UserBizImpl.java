@@ -1,10 +1,7 @@
 package com.kob.backend.biz.user;
 
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import com.kob.backend.controller.user.vo.AccountReqVO;
-import com.kob.backend.controller.user.vo.AccountRespVO;
-import com.kob.backend.controller.user.vo.UserInfoReqVO;
-import com.kob.backend.controller.user.vo.UserRespVO;
+import com.kob.backend.controller.user.vo.*;
 import com.kob.backend.convert.UserConverter;
 import com.kob.backend.dataobject.UserDO;
 import com.kob.backend.exception.BusinessException;
@@ -33,6 +30,7 @@ public class UserBizImpl implements UserBiz {
     @Resource
     private PasswordEncoder passwordEncoder;
 
+    //登录
     @Override
     public AccountRespVO getToken(AccountReqVO accountReqVO) throws BusinessException {
         UsernamePasswordAuthenticationToken authenticationToken =
@@ -52,6 +50,7 @@ public class UserBizImpl implements UserBiz {
         return new AccountRespVO().setToken(jwt);
     }
 
+    //注册
     @Override
     public String register(AccountReqVO accountReqVO) {
         String username = accountReqVO.getUsername(), password = accountReqVO.getPassword(),
@@ -71,6 +70,7 @@ public class UserBizImpl implements UserBiz {
         return null;
     }
 
+    //用户详情
     @Override
     public UserRespVO getUserInfo() {
         UsernamePasswordAuthenticationToken authentication =
@@ -78,9 +78,13 @@ public class UserBizImpl implements UserBiz {
 
         UserDetailsImpl loginUser = (UserDetailsImpl) authentication.getPrincipal();
         UserDO user = loginUser.getUser();
-        return UserConverter.INSTANCE.do2vo(user);
+        //vo
+        UserRespVO userRespVO = UserConverter.INSTANCE.do2vo(user);
+        userRespVO.setAddress(user.getAddress());//同时返回address值
+        return userRespVO;
     }
 
+    //更新用户信息
     @Override
     public void updateUserInfo(UserInfoReqVO userInfoReqVO) {
         UsernamePasswordAuthenticationToken authentication =
@@ -91,5 +95,23 @@ public class UserBizImpl implements UserBiz {
 
         userInfoReqVO.setId(user.getId());
         userService.updateById(UserConverter.INSTANCE.vo2do(userInfoReqVO));
+    }
+
+    //绑定钱包后 将钱包地址和用户助记词存入数据库
+    @Override
+    public void updateUserWalletInfo(Wallet wallet) {
+        //获取用户id
+        UsernamePasswordAuthenticationToken authentication =
+                (UsernamePasswordAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
+        UserDetailsImpl loginUser = (UserDetailsImpl) authentication.getPrincipal();
+        UserDO u = loginUser.getUser();
+        Integer id = u.getId();
+        //封装
+        UserDO user = new UserDO();
+        user.setId(id);
+        user.setMnemonic(wallet.getMnemonic());
+        user.setAddress(wallet.getAddress());
+        System.out.println(user);
+        userService.updateById(user);
     }
 }

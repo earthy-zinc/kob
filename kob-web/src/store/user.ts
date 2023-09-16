@@ -27,6 +27,16 @@ export const useUserStore = defineStore(
           setUser(data)
         })
     }
+    // const updateUser = () => {
+    //   UserApi
+    //     .getLoginUserInfo()
+    //     .then(({ data = {} }) => {
+    //       if (!data.avatar) {
+    //         data.avatar = defaultAvatar
+    //       }
+    //       setUser(data)
+    //     })
+    // }
 
     const removeUser = () => setUser()
 

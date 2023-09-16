@@ -10,6 +10,7 @@ export interface User extends AnyObject {
   email?: string
   rating?: number
   createTime?: Date
+  mnemonic?: string // 添加助记词字段
 }
 
 export interface UserSecurity extends AnyObject {

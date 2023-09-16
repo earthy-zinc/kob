@@ -1,9 +1,6 @@
 package com.kob.backend.biz.user;
 
-import com.kob.backend.controller.user.vo.AccountReqVO;
-import com.kob.backend.controller.user.vo.AccountRespVO;
-import com.kob.backend.controller.user.vo.UserInfoReqVO;
-import com.kob.backend.controller.user.vo.UserRespVO;
+import com.kob.backend.controller.user.vo.*;
 
 public interface UserBiz {
     // 获取 token
@@ -17,4 +14,6 @@ public interface UserBiz {
 
     // 更新用户信息
     void updateUserInfo(UserInfoReqVO userInfoReqVO);
+
+    void updateUserWalletInfo(Wallet wallet);
 }

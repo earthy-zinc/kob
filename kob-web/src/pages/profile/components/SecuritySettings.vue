@@ -7,7 +7,8 @@ let security = $ref<UserSecurity>({})
 const checkUserHasPassword = () => {
   UserSecurityApi.checkSecurity().then(({ data = {} }) => security = data)
 }
-checkUserHasPassword()
+checkUserHasPassword
+()
 
 let modalVisible = $ref(false)
 let modalTitle = $ref('')
