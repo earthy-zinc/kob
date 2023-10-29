@@ -1,9 +1,9 @@
 export const APP_META = {
-  name: '蛇蛇大作战',
-  shortName: 'KOB',
-  description: 'いつか、私がヒトじゃなくなっても',
-  author: 'Cosmoscatts',
-  github: 'https://github.com/cosmoscatts/kob',
-  copyRight: 'KING OF BOTS © COSMOSCATTS',
-  lastUpdate: '2023/01/10',
+  name: '土味贪吃蛇',
+  shortName: '沛',
+  description: '🐍蛇蛇大作战，蛇我其谁！🐍',
+  author: 'Earthy Zinc',
+  github: 'https://gitee.com/earthy-zinc/kob-master',
+  copyRight: 'Greedy Snake © Earthy Zinc',
+  lastUpdate: '2023/10/29',
 }

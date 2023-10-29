@@ -30,11 +30,11 @@ onMounted(() => useLottie({
     <div id="lottie" w400px h300px mt10px />
     <div text-center font-bold mt="[-20px]">
       <h1 text="3xl" m="t-2 b-2">
-        Hi@Everyone, {{ getEmoji() }}. this is an astonishing game.
+        {{ getEmoji() }}，欢迎来到土味贪吃蛇
       </h1>
       <p text-2xl m="t-3 b-2" w-40vw mx-a>
-        This is a two-player game that you can play yourself or use the AI.
-        If you haven't played it yet, give it a try!
+        这是一个双人对战游戏，快去找一个小伙伴和你一起玩吧。当然你也可以和AI先练练手。
+        蛇蛇会随着移动逐渐变长，注意游戏过程中不要碰到任何东西哦。
       </p>
     </div>
   </div>

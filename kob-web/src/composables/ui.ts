@@ -8,7 +8,7 @@ import { APP_LAYOUT_PARAMS } from '~/config'
 // ----- Theme -----
 
 const THEME_MODE_KEY = 'THEME_MODE'
-localStorage.setItem(THEME_MODE_KEY, 'dark') // 默认暗色
+localStorage.setItem(THEME_MODE_KEY, 'light') // 默认亮色
 export const isDark = useDark({
   storageKey: THEME_MODE_KEY,
   valueDark: 'dark',
