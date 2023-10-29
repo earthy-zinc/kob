@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "dev": "vite --port 3333 --open --host",
-    "build": "vite build",
+    "build": "vite build --base=/greedy_snake",
     "preview": "vite preview"
   },
   "dependencies": {
