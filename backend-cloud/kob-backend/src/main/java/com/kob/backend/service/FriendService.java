@@ -12,5 +12,4 @@ import org.springframework.data.domain.PageRequest;
  * @since 2023-09-11 22:16:15
  */
 public interface FriendService extends IService<FriendDO> {
-
 }

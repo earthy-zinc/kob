@@ -9,6 +9,7 @@ import com.kob.backend.exception.ErrorCodeEnum;
 import com.kob.backend.security.UserDetailsImpl;
 import com.kob.backend.service.UserService;
 import com.kob.backend.utils.JwtUtil;
+import org.springframework.beans.BeanUtils;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -113,5 +114,18 @@ public class UserBizImpl implements UserBiz {
         user.setAddress(wallet.getAddress());
         System.out.println(user);
         userService.updateById(user);
+    }
+
+    /**
+     * 根据 id 获取用户信息
+     * @param id 用户 id
+     * @return 用户信息
+     */
+    @Override
+    public UserRespVO getUserInfoById(Integer id) {
+        UserDO userDO = userService.getById(id);
+        UserRespVO userRespVO = new UserRespVO();
+        BeanUtils.copyProperties(userDO, userRespVO);
+        return userRespVO;
     }
 }

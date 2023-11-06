@@ -9,9 +9,9 @@ import javax.validation.constraints.NotBlank;
 @Accessors(chain = true)
 public class FriendReqVO {
     @NotBlank(message = "发送方不能为空")
-    private Integer userId;
+    private String username;
     @NotBlank(message = "接受方不能为空")
-    private Integer userFriendId;
+    private String userFriendName;
     @NotBlank(message = "是否接受好友请求？应传布尔值")
     private Boolean isAccept;
 }
