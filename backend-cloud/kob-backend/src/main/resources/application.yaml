@@ -13,6 +13,11 @@ spring:
     port: 6379
     password: 142536aA
 
+# 配置枚举处理器
+mybatis-plus:
+  configuration:
+    default-enum-type-handler: com.baomidou.mybatisplus.core.handlers.MybatisEnumTypeHandler
+
 
 
 
