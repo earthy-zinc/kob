@@ -16,4 +16,7 @@ public interface UserBiz {
     void updateUserInfo(UserInfoReqVO userInfoReqVO);
 
     void updateUserWalletInfo(Wallet wallet);
+
+    // 根据 id 获取用户信息
+    UserRespVO getUserInfoById(Integer id);
 }

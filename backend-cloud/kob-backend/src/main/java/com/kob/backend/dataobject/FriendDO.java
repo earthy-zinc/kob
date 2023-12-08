@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.kob.backend.dataobject.enums.FriendStatus;
+import lombok.Builder;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -16,6 +18,7 @@ import java.util.Date;
  * @since 2023-09-11 22:16:13
  */
 @Data
+@Builder
 @Accessors(chain = true)
 @TableName("friend")
 public class FriendDO {
@@ -50,7 +53,10 @@ public class FriendDO {
      */
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Shanghai")
     private Date updateTime;
-
+    /**
+     * 对方是否通过好友认证（0：未处理；1：通过；2：拒绝）
+     */
+    private FriendStatus isAccepted;
 
 }
 
