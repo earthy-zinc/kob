@@ -3,6 +3,7 @@ package com.kob.backend.consumer.utils;
 import java.util.*;
 import java.util.concurrent.locks.ReentrantLock;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 
@@ -15,6 +16,7 @@ import com.kob.backend.dataobject.UserDO;
 
 public class Game extends Thread {
     private final static int[] dx = {-1, 0, 1, 0}, dy = {0, 1, 0, -1};
+    // TODO 这里的不能被value注入
     private final static String ADD_BOT_URL = "http://127.0.0.1:3002/bot/add/";
     // 当前对局的模式：匹配、人机
     private final String mode; // machine / selfTrain / match

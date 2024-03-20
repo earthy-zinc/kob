@@ -1,15 +1,18 @@
 # 应用服务 WEB 访问端口
-server:
-  port: 3000
 spring:
+  profiles:
+    # 指定spring在运行中激活哪一个配置
+    # prod为生产环境，激活application-prod.yml中的配置
+    # test为测试环境，激活application-test.yml中的配置
+    # dev为开发环境，激活application-dev.yml中的配置
+    active: dev
   datasource:
     url: jdbc:mysql://rm-bp1035514z9uq43q46o.mysql.rds.aliyuncs.com:3306/kob?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8
     username: admin_1066365803
     password: 142536aA
     driver-class-name: com.mysql.cj.jdbc.Driver
   redis:
-    #    host: 10.20.34.70
-    host: 10.16.76.135
+    host: 47.120.48.158
     port: 6379
     password: 142536aA
 

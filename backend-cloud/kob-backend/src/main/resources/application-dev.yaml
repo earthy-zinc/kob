@@ -1,0 +1,6 @@
+server:
+  port: 3000
+matching-system:
+  add-player-url: http://127.0.0.1:3001/player/add/
+  remove-player-url: http://127.0.0.1:3001/player/remove/
+kob-ip: 127.0.0.1

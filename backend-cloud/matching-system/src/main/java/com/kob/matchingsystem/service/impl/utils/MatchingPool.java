@@ -6,6 +6,7 @@ import java.util.Objects;
 import java.util.concurrent.locks.ReentrantLock;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
@@ -13,7 +14,8 @@ import org.springframework.web.client.RestTemplate;
 
 @Component
 public class MatchingPool extends Thread {
-    private final static String START_GAME_URL = "http://127.0.0.1:3000/pk/start/game";
+    @Value("${kob-backend.start-game-url}")
+    private String startGameUrl;
     private static List<Player> players = new ArrayList<>();
     private static RestTemplate restTemplate;
     private final ReentrantLock lock = new ReentrantLock();
@@ -83,7 +85,7 @@ public class MatchingPool extends Thread {
         data.add("aBotId", a.getBotId().toString());
         data.add("bId", b.getUserId().toString());
         data.add("bBotId", b.getBotId().toString());
-        restTemplate.postForObject(START_GAME_URL, data, String.class);
+        restTemplate.postForObject(startGameUrl, data, String.class);
     }
 
     @Override

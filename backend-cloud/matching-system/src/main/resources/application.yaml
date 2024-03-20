@@ -1,2 +1,5 @@
 server:
   port: 3001
+kob-backend:
+  start-game-url: http://127.0.0.1:3000/pk/start/game
+kob-ip: 127.0.0.1

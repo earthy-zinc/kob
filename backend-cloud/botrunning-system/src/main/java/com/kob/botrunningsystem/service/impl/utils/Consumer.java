@@ -6,19 +6,18 @@ import java.io.PrintWriter;
 import java.util.UUID;
 import java.util.function.Supplier;
 
-import com.kob.botrunningsystem.service.BotRunningService;
 import org.joor.Reflect;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
-import javax.annotation.Resource;
-
 @Component
 public class Consumer extends Thread {
-    private final static String RECEIVE_BOT_MOVE_URL = "http://127.0.0.1:3000/pk/receive/bot/move/";
+    @Value("${kob-backend.receive-bot-move-url}")
+    private String receiveBotMoveUrl;
     private static RestTemplate restTemplate;
     private Bot bot;
 
@@ -74,6 +73,6 @@ public class Consumer extends Thread {
         MultiValueMap<String, String> data = new LinkedMultiValueMap<>();
         data.add("userId", bot.getUserId().toString());
         data.add("direction", direction.toString());
-        restTemplate.postForObject(RECEIVE_BOT_MOVE_URL, data, String.class);
+        restTemplate.postForObject(receiveBotMoveUrl, data, String.class);
     }
 }

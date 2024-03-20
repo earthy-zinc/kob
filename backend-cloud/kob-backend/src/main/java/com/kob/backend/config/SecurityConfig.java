@@ -1,6 +1,7 @@
 package com.kob.backend.config;
 
 import com.kob.backend.filter.JwtAuthenticationTokenFilter;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -21,6 +22,9 @@ import javax.annotation.Resource;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Resource
     private JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter;
+
+    @Value("${kob-ip}")
+    private String kobIp;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -44,7 +48,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/api/user/account/acwing/web/apply_code/",
                         "/api/user/account/acwing/web/receive_code/"
                 ).permitAll()
-                .antMatchers("/pk/start/game", "/pk/receive/bot/move/").hasIpAddress("127.0.0.1")
+                .antMatchers("/pk/start/game", "/pk/receive/bot/move/").hasIpAddress(kobIp)
                 .antMatchers(HttpMethod.OPTIONS).permitAll().anyRequest().authenticated();
 
         http.addFilterBefore(jwtAuthenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);

@@ -13,6 +13,7 @@ import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
@@ -37,8 +38,12 @@ public class WebSocketServer {
      * 用户和 websocket server 的映射
      */
     public final static ConcurrentHashMap<Integer, WebSocketServer> users = new ConcurrentHashMap<>();
-    private final static String ADD_PLAYER_URL = "http://127.0.0.1:3001/player/add/";
-    private final static String REMOVE_PLAYER_URL = "http://127.0.0.1:3001/player/remove/";
+
+    @Value("${matching-system.add-player-url}")
+    private String addPlayerUrl;
+
+    @Value("${matching-system.remove-player-url}")
+    private String removePlayerUrl;
     public static RecordService recordService;
     public static UserService userService;
     public static BotService botService;
@@ -163,7 +168,7 @@ public class WebSocketServer {
         data.add("userId", this.user.getId().toString());
         data.add("rating", this.user.getRating().toString());
         data.add("botId", botId.toString());
-        restTemplate.postForObject(ADD_PLAYER_URL, data, String.class);
+        restTemplate.postForObject(addPlayerUrl, data, String.class);
     }
 
     /**
@@ -172,7 +177,7 @@ public class WebSocketServer {
     private void stopMatching() {
         MultiValueMap<String, String> data = new LinkedMultiValueMap<>();
         data.add("userId", this.user.getId().toString());
-        restTemplate.postForObject(REMOVE_PLAYER_URL, data, String.class);
+        restTemplate.postForObject(removePlayerUrl, data, String.class);
     }
 
     /**
